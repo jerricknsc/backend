@@ -2,7 +2,7 @@ const con = require('./ConnectionManager.js');
 const User = require('./User.js');
 
 class UserDAO {
-    
+
     retrieveAllUsers(){
         let sqlQuery = 'select * from user';
        
@@ -14,14 +14,18 @@ class UserDAO {
                     return err;
                 }
                 else{
-                    const userList = [];     
+                    console.log(result);
+                    // const x = result.rows.map((row) => new User(row));
+                    // console.log(x);
 
-                    for(let i = 0; i < result.length; i += 1){
-                        let row = result[i];
+                    // const userList = [];     
+
+                    // for(let i = 0; i < result.length; i += 1){
+                    //     let row = result[i];
     
-                        const user = new User(row.userid, row.name, row.hashed_password, row.level);
-                        userList.push(user);
-                    }
+                    //     const user = new User(row.userid, row.name, row.hashed_password, row.level);
+                    //     userList.push(user);
+                    // }
                 }
             })
         })
@@ -34,8 +38,8 @@ const userdao = new UserDAO();
 
 // const userList = [];
 
-const all_users = userdao.retrieveAllUsers();
-console.log(all_users);
+userdao.retrieveAllUsers();
+
 
 
 // const pool = require('./database.js');
